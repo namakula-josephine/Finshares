@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinShares</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        .navbar-custom {
+            background-color: white;
+        }
+        .navbar-custom .nav-link {
+            color: black;
+        }
+        .navbar-custom .nav-link:hover {
+            color: blue;
+        }
+        .hero-section {
+            background-color: #002147;
+            color: white;
+            padding: 50px 0;
+        }
+        .hero-section .content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .hero-section .text-content {
+            flex: 1;
+            padding: 20px;
+        }
+        .hero-section .image-content {
+            flex: 1;
+            text-align: center;
+        }
+        .hero-section img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        .hero-section .form-control {
+            border: 2px solid white;
+            border-radius: 5px;
+        }
+        .hero-section .btn-primary {
+            background-color: #0056b3;
+            border: none;
+        }
+        .hero-section .links {
+            margin-top: 15px;
+            color: white;
+        }
+        .hero-section .links a {
+            color: white;
+            text-decoration: underline;
+            margin-right: 10px;
+        }
+        .testimonial-section {
+            background-color: #f8f9fa;
+            padding: 50px 0;
+        }
+        .info-section {
+            background-color: #e8f4fc;
+            padding: 50px 0;
+        }
+        .info-section .info-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .info-section .info-text {
+            flex: 1;
+            max-width: 40%;
+        }
+        .info-section .info-details {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 30px;
+        }
+        .info-section .info-details div {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .info-section .info-details div i {
+            font-size: 2rem;
+            color: #0056b3;
+            margin-right: 10px;
+        }
+        .stats-section {
+            background-color: #ffffff;
+            padding: 50px 0;
+            text-align: center;
+        }
+        .stats-section .stat {
+            flex: 1;
+            padding: 20px;
+            border-right: 1px solid #ddd;
+        }
+        .stats-section .stat:last-child {
+            border-right: none;
+        }
+        .footer {
+            background-color: #002147;
+            color: white;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container">
+            <a class="navbar-brand" href="#">FinShares</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="advisersDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Financial & Mortgage Advisers
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="advisersDropdown">
+                            <a class="dropdown-item" href="/category/financial-advisers/Kampala">Kampala</a>
+                            <a class="dropdown-item" href="/category/financial-advisers/Wakiso">Wakiso</a>
+                            <a class="dropdown-item" href="/category/financial-advisers/Luweero">Luweero</a>
+                            <a class="dropdown-item" href="/category/financial-advisers/Masaka">Masaka</a>
+                            <a class="dropdown-item" href="/category/financial-advisers/Apac">Apac</a>
+                            <a class="dropdown-item" href="/category/financial-advisers/Soroti">Soroti</a>
+                            <a class="dropdown-item" href="/category/financial-advisers/Nakasongola">Nakasongola</a>
+                            <a class="dropdown-item" href="/category/financial-advisers/Gulu">Gulu</a>
+                            <a class="dropdown-item" href="/category/financial-advisers/Mbarara">Mbarara</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="solicitorsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Solicitors
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="solicitorsDropdown">
+                            <a class="dropdown-item" href="/category/Solicitors/Kampala">Kampala</a>
+                            <a class="dropdown-item" href="/category/Solicitors/Wakiso">Wakiso</a>
+                            <a class="dropdown-item" href="/category/Solicitors/Gulu">Gulu</a>
+                            <a class="dropdown-item" href="/category/Solicitors/Soroti">Soroti</a>
+                            <a class="dropdown-item" href="/category/Solicitors/Apac">Apac</a>
+                            <a class="dropdown-item" href="/category/Solicitors/Luweero">Luweero</a>
+                            <a class="dropdown-item" href="/category/Solicitors/Nakasongola">Nakasongola</a>
+                            <a class="dropdown-item" href="/category/Solicitors/Masaka">Masaka</a>
+                            <a class="dropdown-item" href="/category/Solicitors/Mbarara">Mbarara</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="accountantsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Accountants
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="accountantsDropdown">
+                            <a class="dropdown-item" href="/category/Accountants/Kampala">Kampala</a>
+                            <a class="dropdown-item" href="/category/Accountants/Wakiso">Wakiso</a>
+                            <a class="dropdown-item" href="/category/Accountants/Gulu">Gulu</a>
+                            <a class="dropdown-item" href="/category/Accountants/Soroti">Soroti</a>
+                            <a class="dropdown-item" href="/category/Accountants/Apac">Apac</a>
+                            <a class="dropdown-item" href="/category/Accountants/Luweero">Luweero</a>
+                            <a class="dropdown-item" href="/category/Accountants/Nakasongola">Nakasongola</a>
+                            <a class="dropdown-item" href="/category/Accountants/Masaka">Masaka</a>
+                            <a class="dropdown-item" href="/category/Accountants/Mbarara">Mbarara</a>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <div class="content">
+                <div class="text-content">
+                    <h1 class="display-4">Home to Uganda's most trusted advisers</h1>
+                    <p>Search thousands of experts, all vetted, reviewed, and monitored</p>
+                    <form class="form-inline justify-content-center mt-4">
+                        <input type="text" class="form-control mr-2" placeholder="Town, city, postcode">
+                        <select class="form-control mr-2">
+                            <option>Financial and Mortgage Adviser</option>
+                            <option>Legal Adviser</option>
+                            <option>Accountant</option>
+                        </select>
+                        <button type="submit" class="btn btn-primary" style="padding: 10px 20px; margin: 10px 0;">Search</button>
+                    </form>
+                    <div class="links">
+                        <a href="#">Search by Location</a>
+                        <a href="#">Search by Adviser/Firm</a>
+                    </div>
+                </div>
+                <div class="image-content">
+                    <img src="app\static\people.jpg" alt="Family Image">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Information Section -->
+        <section class="info-section">
+            <div class="container">
+                <div class="info-content">
+                    <!-- Left Text -->
+                    <div class="info-text">
+                        <h2>FinShares advisers are checked more thoroughly than any other</h2>
+                    </div>
+                    <!-- Right Icons and Details -->
+                    <div class="info-details">
+                        <div>
+                            <i class="fas fa-star"></i>
+                            <div>
+                                <h5>Rated and reviewed by people like you</h5>
+                                <p>We verify the identity of all reviewers and never remove or edit negative reviews.</p>
+                            </div>
+                        </div>
+                        <div>
+                            <i class="fas fa-user-check"></i>
+                            <div>
+                                <h5>Independently vetted</h5>
+                                <p>We check every adviser is authorised by the appropriate governing body and confirm key details.</p>
+                            </div>
+                        </div>
+                        <div>
+                            <i class="fas fa-eye"></i>
+                            <div>
+                                <h5>Continuous monitoring</h5>
+                                <p>We follow up with you to ensure you get the great advice you need.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container d-flex justify-content-between">
+            <div class="stat">
+                <h5>Average rating from customers</h5>
+                <h2>4.8 <small>out of 5</small></h2>
+                <p class="text-primary">★★★★★</p>
+            </div>
+            <div class="stat">
+                <h2>94%</h2>
+                <h5>of people recommend FinShares</h5>
+            </div>
+            <div class="stat">
+                <h2>310,000+</h2>
+                <h5>client reviews have been left</h5>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer text-center">
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col-md-3">
+                    <h6><a href="#" class="text-white">Find an Adviser</a></h6>
+                    <p><a href="#" class="text-white">Financial & Mortgage Advisers</a></p>
+                    <p><a href="#" class="text-white">Legal Advisers</a></p>
+                    <p><a href="#" class="text-white">Accountants</a></p>
+                </div>
+                <div class="col-md-3">
+                    <h6><a href="#" class="text-white">Company</a></h6>
+                    <p><a href="#" class="text-white">About Us</a></p>
+                    <p><a href="#" class="text-white">Tips & Guides</a></p>
+                    <p><a href="#" class="text-white">Contact</a></p>
+                    <p><a href="#" class="text-white">Careers</a></p>
+                </div>
+                <div class="col-md-3">
+                    <h6><a href="#" class="text-white">Legal & Cookies</a></h6>
+                    <p><a href="#" class="text-white">Terms & Conditions</a></p>
+                    <p><a href="#" class="text-white">Privacy Policy</a></p>
+                </div>
+                <div class="col-md-3">
+                    <h6><a href="#" class="text-white">FinShares Professional</a></h6>
+                    <p><a href="#" class="text-white">Sign up</a></p>
+                    <p><a href="#" class="text-white">Log in</a></p>
+                </div>
+            </div>
+            <div class="mt-3">
+                <p>&copy; FinShares 2024</p>
+                <p>
+                    <a href="#" class="text-white">LinkedIn</a> |
+                    <a href="#" class="text-white">Twitter</a> |
+                    <a href="#" class="text-white">Facebook</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
