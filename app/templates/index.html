@@ -17,44 +17,86 @@
             color: blue;
         }
         .hero-section {
-            background-color: #002147;
+            background: url("{{ url_for('static', filename='images/advisor.png') }}") center/cover no-repeat;
+            position: relative;
             color: white;
-            padding: 50px 0;
+            height: 100vh; /* Full screen height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px; /* Prevents navbar overlap */
         }
-        .hero-section .content {
+        
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 33, 71, 0.8); /* Dark overlay for better readability */
+        }
+        
+        .hero-section .container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-width: 80%;
+        }
+        
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero-section .form-inline {
             display: flex;
             flex-wrap: wrap;
-            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
-        .hero-section .text-content {
-            flex: 1;
-            padding: 20px;
-        }
-        .hero-section .image-content {
-            flex: 1;
-            text-align: center;
-        }
-        .hero-section img {
-            max-width: 100%;
-            border-radius: 10px;
-        }
+        
         .hero-section .form-control {
             border: 2px solid white;
             border-radius: 5px;
+            width: 250px;
         }
+        
         .hero-section .btn-primary {
-            background-color: #0056b3;
+            background-color: #007bff;
             border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
         }
+        
+        .hero-section .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        
         .hero-section .links {
             margin-top: 15px;
-            color: white;
         }
+        
         .hero-section .links a {
             color: white;
+            font-weight: 600;
             text-decoration: underline;
-            margin-right: 10px;
-        }
+            margin-right: 15px;
+            font-size: 1rem;
+        }        
+        
         .testimonial-section {
             background-color: #f8f9fa;
             padding: 50px 0;
@@ -176,32 +218,26 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-section text-center">
-        <div class="container">
-            <div class="content">
-                <div class="text-content">
-                    <h1 class="display-4">Home to Uganda's most trusted advisers</h1>
-                    <p>Search thousands of experts, all vetted, reviewed, and monitored</p>
-                    <form class="form-inline justify-content-center mt-4">
-                        <input type="text" class="form-control mr-2" placeholder="Town, city, postcode">
-                        <select class="form-control mr-2">
-                            <option>Financial and Mortgage Adviser</option>
-                            <option>Legal Adviser</option>
-                            <option>Accountant</option>
-                        </select>
-                        <button type="submit" class="btn btn-primary" style="padding: 10px 20px; margin: 10px 0;">Search</button>
-                    </form>
-                    <div class="links">
-                        <a href="#">Search by Location</a>
-                        <a href="#">Search by Adviser/Firm</a>
-                    </div>
-                </div>
-                <div class="image-content">
-                    <img src="app\static\people.jpg" alt="Family Image">
-                </div>
-            </div>
+<section class="hero-section">
+    <div class="container">
+        <h1>Home to Uganda's Most Trusted Advisers</h1>
+        <p>Search thousands of experts, all vetted, reviewed, and monitored.</p>
+        <form class="form-inline mt-4">
+            <input type="text" class="form-control mr-2" placeholder="Town, city, postcode">
+            <select class="form-control mr-2">
+                <option>Financial and Mortgage Adviser</option>
+                <option>Legal Adviser</option>
+                <option>Accountant</option>
+            </select>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+        <div class="links">
+            <a href="#">Search by Location</a>
+            <a href="#">Search by Adviser/Firm</a>
         </div>
-    </section>
+    </div>
+</section>
+
     <!-- Information Section -->
         <section class="info-section">
             <div class="container">

@@ -1,21 +1,33 @@
 {% extends 'base.html' %}
 
+
 {% block content %}
 <!-- Category Section -->
 <section class="py-5" style="background-color: #e8f4fc;">
     <div class="container">
         <h2 class="mb-4">{{ category|capitalize }} in {{ city }}</h2>
-        <h5 class="mb-4">Towns in {{ city }}</h5>
+        <h5 class="mb-4">Cities in {{ city }}</h5>
         <div class="row">
-            {% for city in cities %}
-            <div class="col-md-4 col-sm-6 mb-3">
-                <a href="{{ url_for('main.category_city', category=category, city=city) }}" class="text-decoration-none">
-                    <div class="p-3 border rounded shadow-sm bg-white text-center">
-                        <span class="badge badge-primary rounded-circle px-3 py-2 mb-2">{{ loop.index }}</span>
-                        <h5 class="text-dark">{{ city }}</h5>
-                    </div>
-                </a>
-            </div>
+            <!-- Hardcoded list of cities -->
+            {% set cities = [
+                "Nabweru",
+                "Bwaise",
+                "Wandegeya",
+                "Nansana",
+                "Nakulabye",
+                "Makindye",
+                "Kasubi",
+                "Kawaala",
+                "Ntinda"
+            ] %}
+            {% for index in range(cities|length) %}
+                {% set city_name = cities[index] %}
+                <div class="col-md-4 col-sm-6 mb-3">
+                    <a href="{{ url_for('main.category_city', category=category, city=city_name) }}" class="text-decoration-none city-link" style="color: #002147;">
+                        <span class="badge badge-primary rounded-circle px-3 py-2 mr-2">{{ index + 1 }}</span>
+                        {{ city_name }}
+                    </a>
+                </div>
             {% endfor %}
         </div>
     </div>

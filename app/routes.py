@@ -1,5 +1,7 @@
 from flask import Blueprint, render_template, request, jsonify
 from . import db
+from flask import send_from_directory
+import os
 from .models import Advisor
 
 main = Blueprint('main', __name__)
@@ -17,12 +19,10 @@ def add_advisor():
     db.session.commit()
     return jsonify({'message': 'Advisor added successfully!'})
 
-# Add this route for the register page
 @main.route('/register')
 def register():
     return render_template('register.html')
 
-# Add this route for the login page
 @main.route('/login')
 def login():
     return render_template('login.html')
@@ -37,3 +37,6 @@ def category_city(category, city):
     return render_template('category_city.html', category=category, city=city)
 
 
+@main.route('/static/images/<filename>')
+def static_images(filename):
+    return send_from_directory(os.path.join(main.root_path, 'static', 'images'), filename)
