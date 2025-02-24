@@ -1,58 +1,28 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
 <!-- Category Section -->
 <section class="py-5" style="background-color: #e8f4fc;">
     <div class="container">
-        <h2 class="mb-4">{{ category|capitalize }} in {{ city }}</h2>
-        <h5 class="mb-4">Cities in {{ city }}</h5>
+        <!-- ✅ FIX: Ensure full category name is displayed -->
+        <h2 class="mb-4">{{ category }} in {{ city.name }}</h2>
+
+        <h5 class="mb-4">Towns in {{ city.name }}</h5>
         <div class="row">
-            <!-- Hardcoded list of cities -->
-            {% set cities = [
-                "Nabweru",
-                "Bwaise",
-                "Wandegeya",
-                "Nansana",
-                "Nakulabye",
-                "Makindye",
-                "Kasubi",
-                "Kawaala",
-                "Ntinda"
-            ] %}
-            {% for index in range(cities|length) %}
-                {% set city_name = cities[index] %}
+            {% if towns %}
+                {% for town in towns %}
                 <div class="col-md-4 col-sm-6 mb-3">
-                    <a href="{{ url_for('main.category_city', category=category, city=city_name) }}" class="text-decoration-none city-link" style="color: #002147;">
-                        <span class="badge badge-primary rounded-circle px-3 py-2 mr-2">{{ index + 1 }}</span>
-                        {{ city_name }}
+                    <a href="#" class="text-decoration-none">
+                        <div class="p-3 border rounded shadow-sm bg-white text-center">
+                            <span class="badge badge-primary rounded-circle px-3 py-2 mb-2">{{ loop.index }}</span>
+                            <h5 class="text-dark">{{ town.name }}</h5>
+                        </div>
                     </a>
                 </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-
-<!-- How It Works Section -->
-<section class="py-5" style="background-color: #ffffff;">
-    <div class="container text-center">
-        <h2 class="mb-4">How FinShares Works</h2>
-        <div class="row">
-            <div class="col-md-4">
-                <i class="fas fa-star fa-3x text-primary"></i>
-                <h5 class="mt-3">Genuine Reviews</h5>
-                <p>We verify the identity of all reviewers and never remove or edit bad reviews.</p>
-            </div>
-            <div class="col-md-4">
-                <i class="fas fa-user-check fa-3x text-primary"></i>
-                <h5 class="mt-3">Independent Service</h5>
-                <p>FinShares is an independent service that lets you find, rate, and review professionals.</p>
-            </div>
-            <div class="col-md-4">
-                <i class="fas fa-check-circle fa-3x text-primary"></i>
-                <h5 class="mt-3">Verified Professionals</h5>
-                <p>We only list professionals authorized by governing bodies and who pass extensive checks.</p>
-            </div>
+                {% endfor %}
+            {% else %}
+                <p class="text-center text-danger">❌ No towns found for this city.</p>
+            {% endif %}
         </div>
     </div>
 </section>
