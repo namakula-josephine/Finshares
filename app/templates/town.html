@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h2 class="mb-4">{{ category.name }} in {{ town.name }}</h2>
+        <p>Showing financial advisers in {{ town.name }}, {{ city.name }}.</p>
+
+        <!-- Search Bar -->
+        <div class="search-bar bg-light p-3 rounded mb-4">
+            <form method="GET" action="{{ url_for('main.town_page', town_name=town.name) }}">
+                <input type="text" class="form-control" name="search" placeholder="Search for an adviser...">
+            </form>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="filters d-flex flex-wrap justify-content-between mb-4">
+            <select class="form-control filter-dropdown mb-2" id="services">
+                <option value="">Select services to find your advisers</option>
+                <option value="Investments and Savings">Investments and Savings</option>
+                <option value="Pensions">Pensions</option>
+                <option value="Mortgages">Mortgages</option>
+                <option value="Retirement income (annuities, drawdown)">Retirement income</option>
+                <option value="Pension Transfers">Pension Transfers</option>
+                <option value="Inheritance Planning">Inheritance Planning</option>
+            </select>
+
+            <select class="form-control filter-dropdown mb-2" id="savings">
+                <option value="">Show all levels</option>
+                <option value="Under £50,000">Under £50,000</option>
+                <option value="Over £50,000">Over £50,000</option>
+                <option value="Over £100,000">Over £100,000</option>
+                <option value="Over £250,000">Over £250,000</option>
+                <option value="Over £500,000">Over £500,000</option>
+            </select>
+
+            <select class="form-control filter-dropdown mb-2" id="distance">
+                <option value="">Up to 40 miles</option>
+                <option value="Up to 5 miles">Up to 5 miles</option>
+                <option value="Up to 10 miles">Up to 10 miles</option>
+                <option value="Up to 15 miles">Up to 15 miles</option>
+                <option value="Up to 20 miles">Up to 20 miles</option>
+                <option value="Up to 30 miles">Up to 30 miles</option>
+            </select>
+        </div>
+
+        <!-- List of Advisors -->
+        <div id="advisors-list">
+            {% if advisors %}
+                {% for advisor in advisors %}
+                <div class="advisor-card p-3 mb-3 border rounded">
+                    <h4>{{ advisor.name }}</h4>
+                    <p><strong>Profession:</strong> {{ advisor.profession }}</p>
+                    <p><strong>Reviews:</strong> {{ advisor.reviews }}</p>
+                    <a href="#" class="btn btn-primary">View Profile</a>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p class="text-danger">❌ No advisers found for this town.</p>
+            {% endif %}
+        </div>
+
+        <!-- List of Other Towns in Same City -->
+        <div class="other-towns mt-5">
+            <h4>Other towns in {{ city.name }}</h4>
+            <ul class="list-group">
+                {% for other_town in city.towns %}
+                    {% if other_town.name != town.name %}
+                        <li class="list-group-item">
+                            <a href="{{ url_for('main.town_page', town_name=other_town.name) }}">
+                                {{ other_town.name }}
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- JavaScript for Filtering -->
+<script>
+    document.querySelectorAll('.filter-dropdown').forEach(dropdown => {
+        dropdown.addEventListener('change', function() {
+            let selectedService = document.getElementById('services').value;
+            let selectedSavings = document.getElementById('savings').value;
+            let selectedDistance = document.getElementById('distance').value;
+
+            let queryParams = new URLSearchParams();
+            if (selectedService) queryParams.append('service', selectedService);
+            if (selectedSavings) queryParams.append('savings', selectedSavings);
+            if (selectedDistance) queryParams.append('distance', selectedDistance);
+
+            let currentUrl = "{{ url_for('main.town_page', town_name=town.name) }}";
+            window.location.href = currentUrl + '?' + queryParams.toString();
+        });
+    });
+</script>
+
+{% endblock %}

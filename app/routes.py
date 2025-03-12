@@ -72,6 +72,34 @@ def category_city(category, city):
         towns=towns
     )
     
+@main.route('/town/<town_name>')
+def town_page(town_name):
+    # Fetch the town
+    town = Town.query.filter_by(name=town_name).first()
+    if not town:
+        return "Town not found", 404
+
+    # Fetch the city and category
+    city = City.query.get(town.city_id)
+    category = Category.query.get(city.category_id)
+
+    # Fetch all advisors in this town's city
+    advisors = Advisor.query.filter_by(city_id=city.id)
+
+    # Apply filters based on user selection
+    service = request.args.get('service')
+    savings = request.args.get('savings')
+    distance = request.args.get('distance')
+
+    if service:
+        advisors = advisors.filter(Advisor.services.contains(service))
+    if savings:
+        advisors = advisors.filter(Advisor.savings_level.contains(savings))
+    if distance:
+        advisors = advisors.filter(Advisor.distance_level.contains(distance))
+
+    return render_template('town.html', town=town, city=city, category=category, advisors=advisors)
+    
 @main.route('/static/images/<filename>')
 def static_images(filename):
     return send_from_directory(os.path.join(main.root_path, 'static', 'images'), filename)

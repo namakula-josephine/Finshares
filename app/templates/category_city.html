@@ -12,7 +12,8 @@
             {% if towns %}
                 {% for town in towns %}
                 <div class="col-md-4 col-sm-6 mb-3">
-                    <a href="#" class="text-decoration-none">
+                    <!-- ✅ FIX: Wrap the whole card inside <a> to make it clickable -->
+                    <a href="{{ url_for('main.town_page', town_name=town.name) }}" class="text-decoration-none">
                         <div class="p-3 border rounded shadow-sm bg-white text-center">
                             <span class="badge badge-primary rounded-circle px-3 py-2 mb-2">{{ loop.index }}</span>
                             <h5 class="text-dark">{{ town.name }}</h5>
